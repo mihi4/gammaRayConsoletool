@@ -68,14 +68,34 @@ DWORD WINAPI thread1(__in LPVOID lpParameter) {
 	return 0;
 }
 
-int main()
+int main(int argc, char** argv)
 {
+	string defaultFile = "bms.keys";  // default config file to load, if no parameter is given
+
+	cout << "You have entered " << argc
+		<< " arguments:" << "\n";
+	for (int i = 0; i < argc; ++i)
+		cout << i << ": " << argv[i] << "\n";
+
     std::cout << "GammaRay started. Press Return to quit!\n";
+	if (argc > 1) {
+		string filepath(argv[1]);
+		if (!(gammaRay.loadConfigFile(filepath))) {
+			cout << "ERROR loading given configfile " << filepath << "... quitting!\n";
+			return 1;
+		}
+	}
+	else { // use default config file falconbms.conf		
+		if (!(gammaRay.loadConfigFile(defaultFile))) {
+			cout << "ERROR loading given configfile " << defaultFile << "... quitting!\n";
+			return 1;
+		}
+	}
 	gammaRay.detectGR();
 	if (gammaRay.isOnline()) {
 		gammaRay.outputBoardData();
 	}
-
+	return 0; // FIXXXME remove after testing
 	Sleep(2500);
 	printf("\033c");
 

@@ -129,10 +129,12 @@
   <ItemGroup>
     <ClCompile Include="GammaRay.cpp" />
     <ClCompile Include="gammaRayConsoletool.cpp" />
+    <ClCompile Include="GRConfig.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BIUSB.H" />
     <ClInclude Include="GammaRay.h" />
+    <ClInclude Include="GRConfig.h" />
     <ClInclude Include="keycodes.h" />
   </ItemGroup>
   <ItemGroup>

@@ -57,13 +57,11 @@ DWORD WINAPI thread1(__in LPVOID lpParameter) {
 	int nCount = 0;
 	HANDLE hTimer = CreateEvent(NULL, FALSE, FALSE, NULL);
 	while (!quit)
-	{
-		
+	{		
 		WaitForSingleObject(hTimer, timerInterval);
 		//cout << "1 s\n";
 		nCount++;
 		timertick(nCount);
-
 	}
 	return 0;
 }

@@ -7,7 +7,6 @@ void GammaRay::initialize()
 {	
 	memset(DataBuffer, 0, MAX_INPUTS);
 	memset(DataBufferOld, 0, MAX_INPUTS);
-	this->configFile = ".\falconBMS.conf";
 }
 
 void GammaRay::detectGR()
@@ -62,7 +61,12 @@ void GammaRay::outputBoardData() {
 	cout << "Name: " << (this->DeviceList[0].DeviceName) << " Serial: " << (this->DeviceList[0].SerialNum) << " Version: " << _itoa_s(this->DeviceList[0].VersionNumber, buff, 10) << "\n" << " DevPath: " << this->DeviceList[0].DevicePath << "\n"
 		<< "InputIndices: " << _itoa_s(this->DeviceList[0].NumberInputIndices, buff, 10) << " PortIndices: " << _itoa_s(this->DeviceList[0].NumberPortIndices, buff, 10) << "\n"
 		<< "OutputIndices: " << _itoa_s(this->DeviceList[0].NumberOutputIndices, buff, 10) << " LatchIndices: " << _itoa_s(this->DeviceList[0].NumberLatchedIndices, buff, 10) << "\n"
-		<< " Manufacturer: " << (this->DeviceList[0].ManufName);
+		<< " Manufacturer: " << (this->DeviceList[0].ManufName) << "\n";
+}
+
+BOOL GammaRay::loadConfigFile(std::string filepath) {
+	cout << "trying to load config file " << filepath << "\n";
+	return TRUE;
 }
 
 void GammaRay::checkDataUpdate() {

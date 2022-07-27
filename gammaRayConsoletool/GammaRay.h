@@ -7,6 +7,20 @@
 #define GRONLINE		TRUE
 #define INPUTBITSLONGS		4
 
+struct key2send
+{
+	char keyOnPress;
+	bool shiftPress;
+	bool ctrlPress;
+	bool altPress;
+	bool holdPress;
+	char keyOnRelease;
+	bool shiftRelease;
+	bool ctrlRelease;
+	bool altRelease;
+};
+
+
 #pragma once
 class GammaRay
 {
@@ -22,9 +36,9 @@ public:
 	void outputBoardData();
 	std::string getDataBuffer();
 	std::string getDataBufferOld();
-	BOOL isOnline();  // returns true, if GammaRay is connected 
+	BOOL isOnline();  // returns true, if GammaRay is connected 	
 	
-	void loadConfigFile(std::string filepath);
+	BOOL loadConfigFile(std::string filepath);
 
 
 private:	
@@ -33,6 +47,8 @@ private:
 	UINT			DeviceCount;
 	char			DataBuffer[256];
 	char			DataBufferOld[256];
+
+	key2send config[256];
 
 	BOOL online = FALSE;
 	std::string configFile;

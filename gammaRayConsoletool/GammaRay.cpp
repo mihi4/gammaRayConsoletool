@@ -6,7 +6,7 @@ using namespace std;
 void GammaRay::initialize()
 {	
 	memset(DataBuffer, 0, MAX_INPUTS);
-	memset(DataBufferOld, 0, MAX_INPUTS);
+	memset(DataBufferOld, 0, MAX_INPUTS);	
 }
 
 void GammaRay::detectGR()

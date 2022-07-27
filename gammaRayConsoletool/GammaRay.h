@@ -1,25 +1,12 @@
 #include "BIUSB.H"
 #include "miKeySender.h"
+#include "GRConfig.h"
 #include <string>
 #include <iostream>
 
 #define GROFFLINE		FALSE
 #define GRONLINE		TRUE
 #define INPUTBITSLONGS		4
-
-struct key2send
-{
-	char keyOnPress;
-	bool shiftPress;
-	bool ctrlPress;
-	bool altPress;
-	bool holdPress;
-	char keyOnRelease;
-	bool shiftRelease;
-	bool ctrlRelease;
-	bool altRelease;
-};
-
 
 #pragma once
 class GammaRay
@@ -48,10 +35,9 @@ private:
 	char			DataBuffer[256];
 	char			DataBufferOld[256];
 
-	key2send config[256];
-
 	BOOL online = FALSE;
 	std::string configFile;
+	GRConfig config;
 	
 	std::string keyCommands[MAX_INPUTS] = { "VK_NUMPAD0", "a"};
 	//miKeySender	keySender; // = new miKeySender();

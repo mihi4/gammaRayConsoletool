@@ -3,7 +3,6 @@
 
 #include "BIUSB.H"
 #include "GammaRay.h"
-
 // #include <Windows.h>
 #include <iostream>
 #include <string>
@@ -11,8 +10,8 @@
 using namespace std;
 
 BOOL quit = FALSE;
-DWORD timerInterval = 200;
-DWORD timerInterval2 = 2000;
+DWORD timerInterval = 200;  // FIXXXME set to 10 or 20 after testing
+DWORD timerInterval2 = 2000; // interval to check, if GammaRay is connected
 GammaRay gammaRay;
 
 void timertick(int count)  // first timer function, to update the inputs every timerInterval ms.
@@ -70,12 +69,12 @@ int main(int argc, char** argv)
 {
 	string defaultFile = "bms.keys";  // default config file to load, if no parameter is given
 
-	cout << "You have entered " << argc
+	/*cout << "You have entered " << argc
 		<< " arguments:" << "\n";
 	for (int i = 0; i < argc; ++i)
-		cout << i << ": " << argv[i] << "\n";
+		cout << i << ": " << argv[i] << "\n"; */
 
-    std::cout << "GammaRay started. Press Return to quit!\n";
+    std::cout << "\nGammaRay started. Press Return to quit!\n\n";
 	if (argc > 1) {
 		string filepath(argv[1]);
 		if (!(gammaRay.loadConfigFile(filepath))) {
@@ -93,7 +92,7 @@ int main(int argc, char** argv)
 	if (gammaRay.isOnline()) {
 		gammaRay.outputBoardData();
 	}
-	return 0; // FIXXXME remove after testing
+	// return 0; // FIXXXME remove after testing
 	Sleep(2500);
 	printf("\033c");
 

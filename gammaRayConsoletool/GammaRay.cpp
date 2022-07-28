@@ -86,11 +86,11 @@ void GammaRay::checkDataUpdate() {
 		break;
 
 	case DEV_INPUT:
-		// new data returned.
+		// 
 		// loop through inputs and look for any toggled inputs.
 		// for (i = 0; i < DeviceList[0].NumberInputIndices; i++) 
 
-		if (!(memcmp(DataBuffer, DataBufferOld, bufSize) == 0)) {
+		if (!(memcmp(DataBuffer, DataBufferOld, bufSize) == 0)) { // inputs have changed - DO SOMETHING! ;)
 			cout << "Inputbuffer has changed!\n";
 		
 			for (i = 0; i < MAX_INPUTS; i++) {
